@@ -3,11 +3,13 @@ This contains the Verilog modules for implementing Radix-2 16-point FFT using CO
 # SRI HARI A S
 
 -> Overview
+
 This repository contains a complete Verilog implementation of a 16-point Radix-2 Decimation-in-Time (DIT) FFT using a CORDIC-based twiddle factor generator.
 The design eliminates hardware multipliers by using shift-add arithmetic, making it highly suitable for FPGA and ASIC implementations.
 The FFT processes complex inputs (real + imaginary) in fixed-point format and produces frequency-domain outputs using a fully pipelined butterfly network.
 
 -> Key Features
+
 Multiplier-free FFT
 CORDIC-based complex rotation
 Fixed-point arithmetic
@@ -17,6 +19,7 @@ Optimized butterfly units
 Accurate spectral peaks with low numerical error
 
 -> Architecture
+
 The FFT uses a 4-stage radix-2 pipeline:
 
 Stage	Description
@@ -28,6 +31,7 @@ Stage 4	Final CORDIC-based butterflies
 Each stage increases bit-width to avoid overflow and maintain accuracy.
 
 -> CORDIC Engine
+
 The CORDIC module performs vector rotation:
 (𝑥′,𝑦′)=(𝑥cos⁡𝜃−𝑦sin⁡𝜃,  𝑥sin⁡𝜃+𝑦cos⁡𝜃)(x′,y′)=(xcosθ−ysinθ,xsinθ+ycosθ)
 
@@ -39,6 +43,7 @@ Fully shift-add based
 No multipliers
 
 -> Accuracy
+
 Small numerical errors occur due to:
 Fixed-point arithmetic
 CORDIC approximation
@@ -46,6 +51,7 @@ Shift-based gain compensation
 However, spectral peaks and FFT bins are correct, validating the FFT architecture.
 
 -> Project Structure
+
 /rtl
    fft1.v
    butterfly.v
@@ -60,6 +66,7 @@ However, spectral peaks and FFT bins are correct, validating the FFT architectur
    FFT_Report.docx
 
 -> How to Simulate
+
 Open ModelSim / Questa / Vivado
 Compile all RTL files
 Compile testbench
@@ -69,5 +76,6 @@ run -all
 View FFT outputs in waveform or console
 
 -> License
+
 This project is provided for academic and research use.
 You are free to modify and extend it.
